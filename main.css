@@ -1,0 +1,1132 @@
+/* COMMON */
+body {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Nanum Gothic', sans-serif;
+  /* 기존에 있던 height: 3000px; -> 이 속성과 값은 제거함.
+  지금까지 우리는 body부분의 height를 추가해서 우리가 작업하고 있는 요소가 화면의 중앙에 보이도록 했는데 
+  이제 예제를 다 만들었기 때문에 height는 필요하지 않음. */
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*INNER*/
+
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* .inner {~} 아래에 다음과 같이 작성한 부분 추가 */
+
+/*BUTTON*/
+
+.btn {
+  /* 선택자 우선순위 점수: 10점 */
+  width: 130px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center; /* (1-1-8-13.) 문자의 정렬 방식 */
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: .4s;
+}
+
+.btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn.btn--reverse {
+  /* 선택자 우선순위 점수 : 20점 */
+  background-color: #333;
+  color: #fff;
+}
+
+.btn.btn--reverse:hover {
+  /* 선택자 우선순위 점수 : 30점 */
+  background-color: transparent; /* 투명함 */
+  color: #333;
+}
+
+.btn.btn--brown {
+  color: #592B18;
+  border-color: #592B18;
+}
+
+.btn.btn--brown:hover {
+  color: #fff;
+  border-color: #592B18;
+}
+
+.btn.btn--gold {
+  color: #D9AA8A;
+  border-color: #D9AA8A;
+}
+
+.btn.btn--gold:hover {
+  color: #fff;
+  border-color: #D9AA8A;
+}
+
+.btn.btn--white {
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn.btn--white:hover {
+  color: #333;
+  border-color: #fff;
+}
+
+.back-to-position {
+  opacity: 0; /* 화면에 안 보이는 투명한 상태!  */
+  transition: 1s;
+}
+
+.back-to-position.to-right /* 왼->오로 나타나는 애니메이션 */ { 
+  transform: translateX(-150px); 
+  /* x축(오른쪽 방향)수평이동은 기본값이 0일텐데 
+  -150px이니까 요소가 왼쪽으로 이동. 그렇게 왼쪽으로 이동이 됐다면 
+  다시 원래 상태로 돌아온다는 것은 왼->오로 이동하는 개념이 됨 */
+}
+
+.back-to-position.to-left /* 오->왼으로 나타나는 애니메이션 */ {
+  transform: translateX(150px);
+  /* 원래 상태로 돌아온다면 오->왼으로 이동하는 개념이 됨 */
+}
+
+.show .back-to-position {
+  opacity: 1; /* 불투명 상태. 즉, 화면에 보임! */
+  transform: translateX(0); /* 원위치로 돌아온다. */
+}
+
+
+  /* html에서 SEASON PRODUCT, RESERVE COFFEE, PICK YOUR FAVORITE, FIND THE STORE
+  요 4개의 파트 안에 있는 요소들 중에
+  클래스명 product면 delay-0 추가
+  클래스명 title이면 delay-1 추가
+  클래스명 description이면 delay-2 추가
+  클래스명 more이면 delay-3 추가 */
+
+.show .back-to-position.delay-0 {
+  transition-delay: 0s; /* 전환효과의 전-후 상태 처리 지연시간! 
+  원래 기본값이 0초이긴 한데 그냥 명시적으로 적어준거임 */
+}
+
+.show .back-to-position.delay-1 {
+  transition-delay: .3s;
+}
+
+.show .back-to-position.delay-2 {
+  transition-delay: .6s;
+}
+
+.show .back-to-position.delay-3 {
+  transition-delay: .9s;
+}
+
+
+/* header {~} 부분 다음과 같이 수정 */
+/* HEADER */
+header {
+  width: 100%;
+  background-color: #f6f5f0;
+  border-bottom: 1px solid #c8c8c8;
+  position: fixed;
+  top: 0;
+  z-index: 9; /* 추가된 부분 */
+}
+
+header > .inner {
+  height: 120px;
+}
+
+header .logo {
+  height: 75px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+header .sub-menu {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: flex;
+}
+header .sub-menu ul.menu {
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+header .sub-menu ul.menu li {
+  position: relative;
+}
+header .sub-menu ul.menu li::before {
+  content: "";
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+header .sub-menu ul.menu li:first-child::before {
+  display: none;
+}
+header .sub-menu ul.menu li a {
+  padding: 11px 16px;
+  display: block;
+  font-size: 13px;
+  color: #656565;
+}
+header .sub-menu ul.menu li a:hover {
+  color: #000;
+}
+header .sub-menu .search {
+  position: relative;
+  height: 34px;
+}
+header .sub-menu .search input {
+  width: 36px;
+  height: inherit;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  background-color: #fff;
+  color: #777;
+  font-size: 12px;
+  transition: width .4s;
+}
+header .sub-menu .search input:focus {
+  width: 190px;
+  border-color: #669900;
+}
+header .sub-menu .search .material-icons {
+  height: 24px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 5px;
+  margin: auto;
+  transition: .4s;
+}
+header .sub-menu .search.focused .material-icons {
+  opacity: 0;
+}
+header .main-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+}
+header .main-menu .item .item__name {
+  padding: 10px 20px 34px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+header .main-menu .item:hover .item__name {
+  background-color: #2C2A29;
+  color: #669900;
+  border-radius: 6px 6px 0 0;
+}
+header .main-menu .item .item__contents {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  display: none;
+}
+header .main-menu .item:hover .item__contents {
+  display: block;
+}
+header .main-menu .item .item__contents .contents__menu {
+  background-color: #2C2A29;
+}
+header .main-menu .item .item__contents .contents__menu > ul {
+  padding: 20px 0;
+  display: flex;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li {
+  width: 220px;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li h4 {
+  padding: 3px 0 12px 0;
+  font-size: 14px;
+  color: #fff;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li {
+  padding: 5px 0;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li:hover {
+  color: #669900;
+}
+header .main-menu .item .item__contents .contents__texture {
+  padding: 26px 0;
+  font-size: 12px;
+  background-image: url("../images/main_menu_pattern.jpg");
+}
+header .main-menu .item .item__contents .contents__texture h4 {
+  color: #999;
+  font-weight: 900;
+}
+header .main-menu .item .item__contents .contents__texture p {
+  color: #64a70b;
+  margin: 4px 0 14px;
+}
+/*BADGES*/
+header .badges {
+  position: absolute;
+  top: 132px;
+  right: 12px;
+}
+header .badges .badge {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgba(0,0,0,.15);
+  cursor: pointer;
+}
+
+
+/* VISUAL */
+
+.visual {
+ margin-top: 120px; /* 헤더(header > .inner 의 높이값 */
+ background-image: url('../images/visual_bg.jpg');
+ background-position: center;
+}
+
+.visual .inner {
+ height: 646px; 
+ /* common(주석) 부분에서 이 프로젝트 안의 inner라는 클래스를 가진 모든 요소는 
+ 공통적으로 width 값이 1100px이라고 지정했기 때문에 
+ 여기에 굳이 또 width값을 지정하지 않아도 됨*/
+}
+
+.visual .inner .title /* .inner 생략 가능 */ {
+  position: absolute;
+  top: 88px;
+  left: -10px;
+}
+
+.visual .title .btn {
+  position: absolute;
+  top: 259px;
+  left: 173px;
+}
+
+.visual .cup1.image /* cup1이랑 image는 붙어있음. 일치 선택자임 */ {
+ position: absolute;
+ bottom: 0;
+ right: -47px;
+}
+
+.visual .cup1.text {
+ position: absolute;
+ top: 38px;
+ right: 171px;
+}
+
+.visual .cup2.image {
+ position: absolute;
+ bottom: 0;
+ right: 162px;
+}
+
+.visual .cup2.text {
+ position: absolute;
+ top: 321px;
+ right: 416px;
+}
+
+.visual .spoon {
+ position: absolute;
+ bottom: 0;
+ left: 275px;
+}
+
+.visual .fade-in {
+  opacity: 0; /* 완전히 투명하다 */
+
+}
+
+/* NOTICE */
+
+.notice .notice-line {
+  position: relative;
+}
+
+.notice .notice-line .bg-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #333;
+}
+
+.notice .notice-line .bg-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #f6f5ef;
+}
+
+.notice .notice-line .inner {
+  height: 62px;
+  display: flex;
+}
+
+.notice .notice-line .inner__left /* .inner__left 앞에 .inner 생략 가능 */ {
+  width: 60%;
+  height: 100%;
+  background-color: #333;
+  display: flex; 
+  /* ▶▶▶ 여기는  flex container ◀◀◀ */
+  align-items: center;
+}
+
+.notice .notice-line .inner__left h2 {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+.notice .notice-line .inner__left .swiper-container {
+  height: 62px;
+  flex-grow: 1; 
+  /* ↑ (1-1-8-20.) flex-grow: flex item의 증가 너비 비율.
+  기본값은 0이고 숫자가 클수록 증가 비율이 커짐 
+  ▶▶▶ 여기는 flex item임! ◀◀◀*/
+}
+
+.notice .notice-line .inner__left .swiper-slide {
+  height: 62px;
+  display: flex;
+  align-items: center;
+}
+
+.notice .notice-line .inner__left .swiper-slide a {
+  color: #fff
+}
+
+
+.notice .notice-line .inner__left .notice-line__more {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  justify-content: center; /* (1-1-8-19.) flex item의 주 축(x축) 정렬방법. 값이 center면 가운데 정렬. */
+  align-items: center; /* (1-1-8-19.) flex item의 교차 축의 한 줄 정렬방법. 값이 center면 가운데 정렬. */
+}
+
+.notice .notice-line .inner__left .notice-line__more .material-icons {
+  color: #fff;
+  font-size: 30px; /* 참고로 아이콘의 기본 크기는 24px임 */
+}
+
+.notice .notice-line .inner__right {
+  width: 40%;
+  height: 100%;
+  display: flex; 
+  /* ▶▶▶ 여기는  flex container ◀◀◀ */
+  justify-content: flex-end; /* (1-1-8-19.) flex item의 주 축(x축) 정렬방법. 값이 flex-end면 끝점으로 정렬 즉, 오른쪽 정렬. */
+  align-items: center;
+}
+
+.notice .notice-line .inner__right h2 {
+  font-size: 17px;
+  font-weight: 700;
+
+}
+
+.notice .notice-line .inner__right .toggle-promotion {
+  width: 62px;
+  height: 62px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notice .notice-line .inner__right .toggle-promotion .material-icons {
+  font-size: 30px;
+
+}
+
+.notice .promotion {
+  height: 693px;
+  background-color: #f6f5ef;
+  position: relative;
+  transition: height .4s;
+  overflow: hidden;
+}
+
+.notice .promotion.hide {
+  height: 0;
+}
+
+.notice .promotion .swiper-container {
+  width: calc(819px * 3 + 20px); 
+  /* width 값은 계산하면 2477px이 나옴 */
+  /* calc() : 특정한 단위를 계산할 수 있는 함수 */
+  height: 553px;
+  position: absolute;
+  top: 40px;
+  left: 50%; /* 왼쪽(left)에서 50% 지점에 배치한다. */
+  margin-left: calc((819px * 3 + 20px)); /* width값 2477px의 절반 */
+  /* left 50퍼에 margin-left를 width의 절반만큼 
+  땡겨(마이너스)옴으로서 가운데에 배치한다. 
+  (★★★자주 사용하는 방법!★★★) */
+}
+
+.notice .promotion .swiper-slide {
+  opacity: .5;
+  transition: opacity 1s;
+  position: relative;
+}
+
+
+/* ↓ (08:21) 스벅 페이지에서 개발자 도구 열고 
+elements 탭으로 이동해서 왼쪽 상단의 select 아이콘 클릭
+-> 스벅 페이지 정가운데있는 이미지 선택
+-> 그 이미지가 소속돼있는 swiper-slide라는 요소를 한번클릭해보면
+-> ★★★이 부분에 swiper-slide라는 클래스가 부여되어 있는 것과 동시에
+지금 swiper-slide-active 라는 클래스도 같이 들어있음을 확인할 수 있음★★★
+: 이게 무슨뜻이냐면 지금 이 swiper-slide가 가장 정가운데에서 
+사용자에게 보여지고 있다는 뜻이다.
+-> 그래서 현재 활성화된 슬라이드가 무엇인지를 이렇게 클래스로 표현해준거임
+왜냐면 지금 화면에 정가운데에서 사용자에게 보여지는 슬라이드는 하나뿐이니까
+-> ★★★swiper-slide-active라는 클래스명 기억해두기!★★★ 
+-> ★★★이 기능은 JS의 swiper 라이브러리임★★★*/
+.notice .promotion .swiper-slide-active {
+  opacity: 1;
+}
+
+.notice .promotion .swiper-slide .btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* css 상단의 button부분에 btn클래스를 가진 요소는
+  공통적으로 width가 130px이라고 이미 지정해놔서
+  여기서 또 width값 지정할 필요는 없다 */
+}
+
+.notice .promotion .swiper-pagination {
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+.notice .promotion .swiper-pagination-bullet {
+  background-color: transparent; /* 투명한 색 */
+  background-image: url("../images/promotion_slide_pager.png"); 
+  /* ../ : 폴더 밖으로 한 번 나가라 */
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  outline: none;
+}
+
+.notice .promotion .swiper-pagination-bullet:last-child {
+  margin-right: 0;
+}
+
+.notice .promotion .swiper-pagination-bullet-active {
+  background-image: url("../../images/promotion_slide_pager_on.png");
+}
+
+.notice .promotion .swiper-prev,
+.notice .promotion .swiper-next {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: absolute;
+  top: 300px;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .4s;
+}
+/* (★★★↑이렇게 다중 선택자 작성 시 반드시 엔터쳐서 줄바꿈 해줘야됨★★★) */
+
+.notice .promotion .swiper-prev {
+  left: 50%;
+  margin-left: -480px;
+}
+
+.notice .promotion .swiper-next {
+  right: 50%;
+  margin-right: -480px;
+}
+
+.notice .promotion .swiper-prev:hover,
+.notice .promotion .swiper-next:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* REWARDS */
+
+.rewards {
+  position: relative;
+}
+
+.rewards .bg-left{
+  width: 50%;
+  height: 100%;
+  background-color: #272727;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rewards .bg-right{
+  width: 50%;
+  height: 100%;
+  background-color: #d5c798;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.rewards .inner {
+  background-image: url("./images/rewards.jpg");
+  height: 241px;
+  /* 기본적으로 inner는 position: relative라고 위에 common에서 지정함 */
+}
+
+.rewards .inner .btn-group {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap; /* 수평으로 만들기, width 250px 넘어가면 줄바꿈 허용! */
+  /* 기본적으로 btn은 width가 130px 이라고 위에 common에서 지정함 */
+}
+
+.rewards .inner .btn-group .btn.sign-up {
+  /*width: 130px;*/
+  margin-right: 10px;
+}
+
+.rewards .inner .btn-group .btn.sign-in {
+  width: 110px;
+}
+
+.rewards .inner .btn-group .btn.gift {
+  margin-top: 10px;
+  flex-grow: 1; /* → display flex container 부분에서 최대한의 너비로 늘어나게끔 지정 */
+}
+
+/* YOUTUBE VIDEO */
+
+.youtube {
+  position: relative;
+  height: 700px;
+  background-color: #333;
+  overflow: hidden; /* 넘치는 영역은 잘라낸다 */
+}
+
+.youtube .youtube__area {
+  width: 1920px;
+  background-color: orange;
+  position: absolute; /* player라는 id값을 가진 요소의 부모요소는 여기 youtube__area다. 
+  position 값이 absolute라고 들어가있으므로 수정할 필요는 없음 */
+  left: 50%; /* 화면에서 왼쪽에서 50%. 즉, ★★★정가운데를 '기준'★★★으로 배치됨 
+  (※♤정가운데에 배치♤됐다는 말과 다름!!) */
+  margin-left: calc(1920px/-2); 
+  /* 위에서 언급한 ♤정가운데에다가 배치♤시키려면 
+  margin-left써서 가로 너비의 절반만큼을 왼쪽으로 땡긴다
+  그리고 땡기려면 값을 음수로 써야함! */
+  top: 50%;
+  margin-top: calc(1920px * 9 / 16 / -2); 
+  /* 가로(너비 1920px) : 세로 = 16:9 비율! 
+  그리고 나누기 -2 해줘야지 이 요소의 세로너비의 절반만큼을
+  위로 끌어올릴수 있음. */
+}
+
+.youtube .youtube__area::before {
+  content: "";
+  display: block; /* before라는 가상요소는 인라인 요소니까 가로,세로너비를 가질수없어서 
+  display 속성을 통해 블록(block) 요소로 바꾼다 */
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* 16:9 비율 */
+} /* -> html에 요소를 직접적으로 추가하지 않고 css 선에서
+가상요소(::) 만들어서 content를 추가함 */
+
+.youtube .youtube__cover {
+  background-image: url("../images/pattern/video_cover_pattern.png");
+  background-color: rgba(0,0,0,.3); /* 불투명도 30%의 검정색 배경 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#player {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}  /* player라는 id값을 가진 요소의 부모요소는 youtube__area다.
+youtube__area 요소에 position 값이 absolute라고 들어가있으므로 수정할 필요는 없음 */
+
+.youtube .inner {
+  height: 700px;
+}
+
+.youtube .floating1 {
+  position: absolute; /* 이 요소의 부모요소는 inner 클래스를 가지고 있는데 
+  inner 클래스를 가진 요소는 공통적으로(common 파트) position값이 정해놔서 
+  따로 또 부모요소에 포지션 값을 입력하지 않아도 괜찮음! */
+  top: 50px;
+  left: 0;
+}
+
+.youtube .floating2 {
+  position: absolute;
+  top: 350px;
+  left: 150px;
+}
+
+/* .youtube .floating3 {
+  position: absolute;
+  bottom: -200px;
+  right: 0;
+}  -> 해당 부분 여기 파트에선 지움 */
+
+
+/* SEASON PRODUCT */
+.season-product {
+  background-image: url("../images/season_product_bg.jpg"); /* ../ 는 지금 이 파일(main.css) 밖으로 한번 나가서 살펴본단 뜻 */
+}
+
+.season-product .inner {
+  height: 400px;
+}
+
+.season-product .floating3 {
+  position: absolute;
+  top: -200px;
+  right: 0;
+} /* YOUTUBE VIDEO 파트에서 지웠던 것인데 
+여기 파트에 
+ .youtube 만 .season-product로 바꾸고
+ bottom을 top으로 바꾸고 그대로 복사 */
+
+.season-product .text-group {
+  position: absolute;  /* 이 요소의 부모요소는 inner 클래스를 가지고 있는데 
+  inner 클래스를 가진 요소는 공통적으로(common 파트) position값이 정해놔서 
+  따로 또 부모요소에 포지션 값을 입력하지 않아도 괜찮음! */
+  top: 110px;
+  right: 100px;
+}
+
+ /* .season-product .text-group .product 부분엔 따로 스타일 적용X */
+.season-product .text-group .title {
+  margin-bottom: 10px;
+}
+
+.season-product .text-group .description {
+  margin-bottom: 15px;
+}
+
+
+/* 추가적으로 확인할 부분
+: 우리가 이전에 만들었던 youtube(클래스명) section(요소명)에
+오른쪽 하단에 있는 둥둥 떠있는 아이콘 자체가 이 섹션에 잘라져보임
+-> youtube section 부분에 overflow: hidden이라는 속성과 값 추가했기 때문
+-> html로 이동하기
+-> YOUTUBE VIDEO 파트에서 
+ <img src="./images/floating3.png" alt="Icon" class="floating floating3" />
+-> 이 부분을 지우고 
+-> SEASON PRODUCT 파트 내에 
+ <div class="inner">~</div> 여기 내부 맨 윗줄에 붙여넣기 
+ : youtube section 에서는 overflow: hidden이 적용되어 있기 때문에 
+ 이미지를 정상적으로 특정한 섹션과 섹션 사이에 걸쳐져 있는 형태로 제공할 수가 없었고
+ 그래서 그 이미지를 꺼내서 다음 섹션에다가 추가를 하면 됨 */
+
+
+ /* RESERVE COFFEE */
+
+.reserve-coffee {
+  background-image: url("../images/reserve_bg.jpg");
+}
+
+.reserve-coffee .inner {
+  height: 400px;
+}
+
+.reserve-coffee .reserve-logo {
+  position: absolute;
+  top: 110px;
+  left: 0;
+}
+
+.reserve-coffee .text-group {
+  position: absolute;
+  top: 124px;
+  left: 208px;
+}
+
+.reserve-coffee .product {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* PICK YOUR FAVORITE */
+
+.pick-your-favorite {
+  background-image: url("../images/favorite_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; 
+  /* (16:42) 요소가 위아래로 스크롤이 될 때 그 요소의 배경이미지가 같이 스크롤되는 게 기본값인데
+  fixed(고정된)를 써서 배경이미지가 요소를 따라 같이 스크롤되지 않도록 뷰포트 부분에 고정시킨다 */
+  background-size: cover;
+  /* (17:15) 배경이미지의 요소를 더 넓은 너비(즉, 여기선 뷰포트!)에 맞춰서 출력하게끔 함 */
+}
+
+.pick-your-favorite .inner {
+  padding: 110px 0; /* 상하 110px, 좌우는 0(=사용X) */
+}
+
+.pick-your-favorite .text-group {
+  margin-left: 100px;
+  width: 362px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pick-your-favorite .text-group .title {
+  margin-bottom: 40px;
+}
+
+.pick-your-favorite .text-group .description {
+  margin-bottom: 40px;
+}
+
+/* RESERVE STORE */
+
+.reserve-store {
+  background-image: url("../images/reserve_store_bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.reserve-store .inner {
+  height: 600px;
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+}
+
+  /* (03:07) 3d 애니메이션에 대한 개념 자세히 이해하기 참고 */
+.reserve-store .medal {
+  width: 334px;
+  height: 334px;
+  perspective: 600px; /* perspective: 원근법. "자식 혹은 후손요소가 3d 애니메이션 효과를 가질때 
+ 그 애니메이션 효과를 원근법을 이용해서 약 300px 거리에서 지켜보는거다." */
+}
+
+.reserve-store .medal .front,
+.reserve-store .medal .back {
+  width: 334px;
+  height: 334px;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: 1s;
+}
+
+.reserve-store .medal .front {
+  position: absolute;
+  transform: rotateY(0deg);
+}
+
+.reserve-store .medal:hover .front {
+  transform: rotateY(180deg);
+}
+
+.reserve-store .medal .back {
+  transform: rotateY(-180deg);
+}
+
+.reserve-store .medal:hover .back {
+  transform: rotateY(0deg);
+}
+
+.reserve-store .medal .back .btn {
+  position: absolute;
+  top: 240px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  /* btn이라는 요소는 공통적으로 width: 130px으로 설정함 (최상단 common 파트 참고)*/
+}
+
+/* FIND STORES */
+
+.find-store {
+  background-image: url("../images/find_store_bg.jpg");
+}
+
+.find-store .inner {
+  height: 400px;
+  /* inner엔 공통적으로(common파트!) position: relative 있음 */
+}
+
+.find-store .texture1 {
+ position: absolute;
+ top: 0;
+ left: 400px;
+}
+
+.find-store .texture2 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.find-store .picture {
+ position: absolute;
+ border-radius: 50%; /* 동그랗게 됨 */
+ box-shadow: 2px 2px 8px rgba(0,0,0,.5); /* x축 2px, y축 2px, blur가 8px, 검정색의 약 50% 불투명도 가지는 그림자 */
+}
+
+.find-store .picture1 {
+  top: -60px;
+  left: 0;
+}
+
+.find-store .picture2 {
+  top: 150px;
+  left: 250px;
+}
+
+.find-store .text-group {
+  position: absolute;
+  top: 120px;
+  left: 550px;
+}
+
+.find-store .text-group .title {
+  margin-bottom: 20px;
+}
+
+.find-store .text-group .description {
+  margin-bottom: 20px;
+}
+
+ /* .find-store .text-group .more 부분엔 따로 스타일 적용X */
+
+
+/* AWARDS */
+
+.awards {
+  background-color: #272727;
+}
+
+.awards .inner {
+  padding: 40px 0; /* 상하 40픽셀, 좌우 사용x */
+}
+
+.awards .swiper-container {
+  width: 100%;
+  height: 40px;
+}
+
+.awards .swiper-prev,
+.awards .swiper-next {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  outline: none; /* 기본값인 파란색 테두리선이 들어가지 않도록 outline값을 none으로 만들어줌 */
+  color: #fff; /* css 상속을 통해서 글자색 흰색이 그 하위 요소로 상속되면서 
+  material-icons 부분에 출력되는 아이콘이 흰색으로 나올 수 있도록 만들어줌 */
+  opacity: .3;
+  cursor: pointer;
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  position: absolute; /* 부모 요소인 inner는 common 파트에서 position: relative 지정해놨음! */
+  top: 0;
+  bottom: 0;
+  margin: auto; /*top, bottom을 0으로 지정했다면 margin: auto를 써서 수직 가운데 배치를 할 수 있음 
+  (수직 가운데 배치를 한다면 세로너비(height)를 확인해봐야됨! 다행히 여기서 값이 42px로 잘 들어가있음) */
+}
+
+.awards .swiper-prev {
+  left: -100px;
+}
+
+.awards .swiper-next {
+  right: -100px;
+}
+
+
+.awards .swiper-prev:hover,
+.awards .swiper-next:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+
+/* FOOTER */
+
+footer {
+  background-color: #272727;
+  border-top: 1px solid #333;
+}
+
+footer .inner {
+  padding: 40px 0 60px 0; /* 상하좌우 */
+}
+
+footer .menu {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+}
+
+footer .menu li {
+  position: relative;
+}
+
+                /* html에서 굳이 요소 만들지말고 여기 css에서 가상요소(::) before를 통해 화면에 점 모양 만들기! */
+footer .menu li::before { 
+  content:""; /* 가상요소(::) before는 content 속성 필수! */
+  width: 3px;
+  height: 3px;
+  background-color: #555;
+  position: absolute; /* ★position: absolute 혹은 fixed를 쓰면 여기 가상요소 before 같은 인라인요소는 블록요소가 됨! */
+  top: 0;
+  bottom: 0;
+  right: -1px;
+  margin: auto; /*top, bottom을 0으로 지정했다면 margin: auto를 써서 수직 가운데 배치를 할 수 있음 
+  (수직 가운데 배치를 한다면 세로너비(height)를 확인해봐야됨! 다행히 여기서 값이 3px로 잘 들어가있음) */
+  padding: 15px; /* 가상 요소 before는 인라인요소라 width, height 같은 길이 속성의 값을 정상적으로 사용할 수 없기에 
+  원래 display: block; 을 통해 블록요소로 바꿔줘야 되지만
+  ★윗줄에서 position: absolute; 를 써서 이미 블록요소로 바꿔줬기 때문에 display:block; 은 안 써도 된다!!  */
+}
+
+footer .menu li:last-child::before { /* :last-child라는 가상클래스 선택자 사용 */
+  display: none;
+}
+
+footer .menu li a {
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 15px; /* 인라인 요소(li)는 margin,padding 같은 여백 속성의 위아래 값을 정상적으로 사용할 수 없기에 
+  display: block; 을 통해 블록요소로 바꿔줘야됨 */
+  display: block;
+} 
+
+footer .menu li a.green {
+  color: #669900;
+}
+
+footer .btn-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* 수평 정렬 */
+}
+
+footer .btn-group .btn {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+footer .btn-group .btn:last-child {
+  margin-right: 0;
+}
+
+footer .info {
+  margin-top: 30px;
+  text-align: center; /* 문자 가운데 정렬 */
+}
+
+footer .info span { /* span 요소는 인라인 요소라서 왼->오로 수평으로 쌓임 (글씨처럼 취급돼야해서..) */
+  margin-right: 20px;
+  color: #999;
+  font-size: 12px;
+}
+
+footer .info span:last-child {
+  margin-right: 0;
+}
+
+footer .copyright {
+  color: #999;
+  font-size: 12px;
+  text-align: center; /* 문자 가운데 정렬 */
+  margin-top: 12px;
+}
+
+footer .logo {
+  margin: 30px auto 0; /* 상, 중(좌우), 하 */
+
+  /* margin(좌우): auto;해서 가운데 정렬하려면 원래 width(가로너비)가 필요한데 여기선 width 안 써도 됨.
+  이유: 이 logo라는 클래스를 가진 요소는 img태그로 만들어져있는데
+  -> img 요소가 (조건1)display: block; + (조건2)margin: auto; 인 경우엔 width 없이도 가운데 정렬이 가능하기 때문.
+  -> 우리는 최상단의 common 파트에서 img 태그에 display: block; 을 써놨었고(조건1 충족.) 여기선 margin: auto; 썼음.(조건2 충족.)
+  -> 따라서 이 img요소같은 경우에는 브라우저가 이 이미지를 출력하는 가로너비를 알고 있다고 가정을 하고 
+  margin auto를 자동으로 계산해서 가운데 정렬을 시켜줄 수 있음. */
+
+}
+
+#to-top {
+  width: 42px;
+  height: 42px;
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center; /* 수직 가운데 정렬 */
+  align-items: center; /* 수평 가운데 정렬 */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9; /* 다른 섹션들보다 위에 쌓게 하기 위해 z-index 속성을 써서 쌓임 우선순위를 높게 함 */
+}
